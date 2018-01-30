@@ -1,0 +1,42 @@
+/*Modified by Alex Schneider
+01-07-17
+Graphics*/
+
+/* Copies the dim-dimensional vector v to the dim-dimensional vector copy. */
+void vecCopy(int dim, double v[], double copy[]) {
+	for(int i = 0; i < dim; i += 1){
+	    copy[i] = v[i];
+	}
+}
+
+/* Adds the dim-dimensional vectors v and w. */
+void vecAdd(int dim, double v[], double w[], double vPlusW[]) {
+	for(int i = 0; i < dim; i += 1){
+	    vPlusW[i] = (v[i] + w[i]);
+	}
+}
+
+/* Subtracts the dim-dimensional vectors v and w. */
+void vecSubtract(int dim, double v[], double w[], double vMinusW[]) {
+	for(int i = 0; i < dim; i += 1){
+	    vMinusW[i] = (v[i] - w[i]);
+	}
+}
+
+/* Scales the dim-dimensional vector w by the number c. */
+void vecScale(int dim, double c, double w[], double cTimesW[]) {
+	for(int i = 0; i < dim; i += 1){
+	    cTimesW[i] = (c * w[i]);
+	}
+}
+
+/* Assumes that there are dim + 2 arguments, the last dim of which are doubles. 
+Sets the dim-dimensional vector v to those doubles. */
+void vecSet(double v[], int dim,...){
+    va_list argumentPointer;
+    va_start(argumentPointer, dim);
+    for(int i = 0; i < dim; i += 1){
+        v[i] = va_arg(argumentPointer, double);
+    }
+    va_end(argumentPointer);
+}
